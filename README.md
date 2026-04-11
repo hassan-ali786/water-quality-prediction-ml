@@ -44,7 +44,7 @@ Random Forest Classifier is used. Missing values are handled using mean imputati
 - Classification Report  
 
 ## How to Run  
-git clone https://github.com/your-username/water-quality-project.git  
+git clone https://github.com/hassan-ali786/water-quality-project.git  
 cd water-quality-project  
 pip install -r requirements.txt  
 python model/train_model.py  
