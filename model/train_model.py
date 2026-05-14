@@ -1,44 +1,35 @@
-import pandas as pd
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import pickle
+import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+from config import DATA_PATH, MODEL_PATH, TEST_SIZE, RANDOM_STATE, N_ESTIMATORS
 
-import os
-import pandas as pd
-
-base_path = os.path.dirname(os.path.dirname(__file__))
-data_path = os.path.join(base_path, "data", "water_potability.csv")
-
-df = pd.read_csv(data_path)
-
-# Handle missing values
+df = pd.read_csv(DATA_PATH)
 df.fillna(df.mean(), inplace=True)
 
-# Features & Target
 X = df.drop("Potability", axis=1)
 y = df["Potability"]
 
-# Split
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+    X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE
 )
 
-# Model
-model = RandomForestClassifier(n_estimators=100)
+model = RandomForestClassifier(n_estimators=N_ESTIMATORS, random_state=RANDOM_STATE)
 model.fit(X_train, y_train)
 
-# Prediction
 y_pred = model.predict(X_test)
 
-# Accuracy
-acc = accuracy_score(y_test, y_pred)
-print("Accuracy:", acc)
-
-# Confusion Matrix
+print("Accuracy:", accuracy_score(y_test, y_pred))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("Classification Report:\n", classification_report(y_test, y_pred))
 
-# Save model
-pickle.dump(model, open("model.pkl", "wb"))
+with open(MODEL_PATH, "wb") as f:
+    pickle.dump(model, f)
 
-print("Model saved as model.pkl ✅")
+print("Model saved successfully")
