@@ -2,7 +2,7 @@
 
 A machine learning web app that predicts whether water is safe for drinking based on physicochemical parameters.
 
-Live Demo: Coming Soon — Streamlit Cloud
+Live Demo: https://water-quality-prediction-ml-eykh9eeqjxvj3gpzxurkmz.streamlit.app
 
 ---
 
@@ -10,10 +10,11 @@ Live Demo: Coming Soon — Streamlit Cloud
 
 | Model | CV Accuracy | Test Accuracy |
 |---|---|---|
-| Random Forest | 68.49% | 68% |
-| XGBoost | ~67% | ~67% |
+| Random Forest (tuned) | ~70% | 70% |
+| XGBoost (tuned) | ~69% | 69% |
+| Stacking Ensemble (final) | — | 71% |
 
-Best Model: Random Forest selected automatically
+Best Model: Stacking Ensemble (Random Forest + XGBoost + Gradient Boosting)
 
 ---
 
@@ -56,7 +57,8 @@ water-quality-prediction-ml/
 │   └── water_potability.csv
 ├── model/
 │   ├── train_model.py
-│   └── model.pkl
+│   ├── model.pkl
+│   └── scaler.pkl
 ├── notebooks/
 │   └── eda.ipynb
 ├── config.py
@@ -69,10 +71,12 @@ water-quality-prediction-ml/
 ## ML Pipeline
 
 - Missing values handled via mean imputation
+- Feature engineering (3 new interaction features)
 - Class imbalance fixed with SMOTE
-- 5-Fold Stratified Cross Validation
-- Models compared: Random Forest, XGBoost
-- Best model auto-selected and saved
+- StandardScaler for feature scaling
+- GridSearchCV for hyperparameter tuning
+- Stacking Ensemble: Random Forest + XGBoost + Gradient Boosting
+- Final estimator: Logistic Regression
 
 ---
 
@@ -106,7 +110,5 @@ Data Scientist and ML Engineer
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Hassan%20Ali-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/hassan-ali-ds)
 
 ---
-
-# Live Demo: https://water-quality-prediction-ml-eykh9eeqjxvj3gpzxurkmz.streamlit.app
 
 Star this repo if you found it useful!
