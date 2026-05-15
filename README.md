@@ -1,87 +1,86 @@
-# Water Quality Prediction using Machine Learning
+# Water Quality Prediction
 
-## Overview  
-This project is a machine learning-based system that predicts whether water is safe for drinking based on physicochemical parameters. It uses a trained classification model and provides an interactive Streamlit web application for real-time predictions.
+A machine learning web app that predicts whether water is safe for drinking based on physicochemical parameters.
 
-The workflow includes data preprocessing, exploratory data analysis, model training, evaluation, and deployment.
-
----
-
-## Problem Statement  
-Access to safe drinking water is a critical global issue. This project aims to classify water as potable or non-potable using its chemical properties.
+Live Demo: Coming Soon — Streamlit Cloud
 
 ---
 
-## Features  
-- Data preprocessing and missing value handling  
-- Exploratory Data Analysis (EDA)  
-- Machine learning model training and evaluation  
-- Real-time prediction via Streamlit app  
-- End-to-end deployment-ready pipeline  
+## Results
+
+| Model | CV Accuracy | Test Accuracy |
+|---|---|---|
+| Random Forest | 68.49% | 68% |
+| XGBoost | ~67% | ~67% |
+
+Best Model: Random Forest selected automatically
 
 ---
 
-## Dataset  
-- pH  
-- Hardness  
-- Solids  
-- Chloramines  
-- Sulfate  
-- Conductivity  
-- Organic Carbon  
-- Trihalomethanes  
-- Turbidity  
-- Potability (Target Variable)  
+## Dataset Features
+
+| Feature | Unit | WHO Safe Range |
+|---|---|---|
+| pH | — | 6.5 – 8.5 |
+| Hardness | mg/L | < 300 |
+| Solids | ppm | < 500 |
+| Chloramines | ppm | < 4 |
+| Sulfate | mg/L | < 250 |
+| Conductivity | μS/cm | < 400 |
+| Organic Carbon | ppm | < 2 |
+| Trihalomethanes | μg/L | < 80 |
+| Turbidity | NTU | < 1 |
 
 ---
 
-## Tech Stack  
+## Tech Stack
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white) ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=matplotlib&logoColor=white) ![Seaborn](https://img.shields.io/badge/Seaborn-0A7D7E?style=flat) ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-189AB4?style=flat)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)
 
 ---
 
-## Project Structure  
+## Project Structure
 
 ```bash
-water-quality-project/
+water-quality-prediction-ml/
+├── app/
+│   ├── app.py
+│   └── pages/
+│       ├── 1_EDA.py
+│       └── 2_Prediction.py
 ├── data/
 │   └── water_potability.csv
 ├── model/
 │   ├── train_model.py
 │   └── model.pkl
-├── app/
-│   └── app.py
 ├── notebooks/
 │   └── eda.ipynb
+├── config.py
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## Model Training  
+## ML Pipeline
 
-- Algorithm: Random Forest Classifier  
-- Missing values handled using mean imputation  
-- Train-test split applied  
-- Model saved using Pickle (`model.pkl`)  
-
----
-
-## Model Evaluation  
-
-- Accuracy Score  
-- Confusion Matrix  
-- Precision, Recall, F1-Score (Classification Report)  
+- Missing values handled via mean imputation
+- Class imbalance fixed with SMOTE
+- 5-Fold Stratified Cross Validation
+- Models compared: Random Forest, XGBoost
+- Best model auto-selected and saved
 
 ---
 
-## How to Run  
+## How to Run
 
 ```bash
-git clone https://github.com/hassan-ali786/water-quality-project.git
-cd water-quality-project
+git clone https://github.com/hassan-ali786/water-quality-prediction-ml.git
+cd water-quality-prediction-ml
 pip install -r requirements.txt
 python model/train_model.py
 streamlit run app/app.py
@@ -89,24 +88,23 @@ streamlit run app/app.py
 
 ---
 
-## Results  
-The model successfully predicts water potability based on input chemical features with good classification performance.
+## Future Improvements
+
+- Hyperparameter tuning with Optuna
+- Feature importance visualization
+- Real-time sensor data integration
+- Docker containerization
 
 ---
 
-## Future Improvements  
-- Hyperparameter tuning  
-- Cloud deployment (AWS / Render / Streamlit Cloud)  
-- Real-time sensor data integration  
-- Feature importance visualization  
+## Author
+
+Hassan Ali
+Data Scientist and ML Engineer
+
+[![GitHub](https://img.shields.io/badge/GitHub-hassan--ali786-181717?style=flat&logo=github)](https://github.com/hassan-ali786)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Hassan%20Ali-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/hassan-ali-ds)
 
 ---
 
-## Author  
-Hassan Ali  
-Data Scientist and Machine Learning Engineer  
-GitHub: https://github.com/hassan-ali786  
-
----
-
-⭐ If you like this project, feel free to fork and improve it!
+Star this repo if you found it useful!
