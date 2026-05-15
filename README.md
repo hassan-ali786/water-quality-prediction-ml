@@ -107,4 +107,6 @@ Data Scientist and ML Engineer
 
 ---
 
+# Live Demo: https://water-quality-prediction-ml-eykh9eeqjxvj3gpzxurkmz.streamlit.app
+
 Star this repo if you found it useful!
