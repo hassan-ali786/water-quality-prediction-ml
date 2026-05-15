@@ -19,4 +19,4 @@ based on its chemical properties.
 - 🔬 **Prediction** — Check water quality
 """)
 
-st.info("Built with Random Forest | Accuracy: 68% | Dataset: Kaggle Water Potability")
+st.info("Built with Random Forest | Accuracy: 70% | Dataset: Kaggle Water Potability")

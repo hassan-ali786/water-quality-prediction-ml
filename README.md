@@ -2,8 +2,6 @@
 
 A machine learning web app that predicts whether water is safe for drinking based on physicochemical parameters.
 
-Live Demo: https://water-quality-prediction-ml-eykh9eeqjxvj3gpzxurkmz.streamlit.app
-
 ---
 
 ## Results
@@ -110,5 +108,8 @@ Data Scientist and ML Engineer
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Hassan%20Ali-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/hassan-ali-ds)
 
 ---
+
+Live Demo: https://water-quality-prediction-ml-eykh9eeqjxvj3gpzxurkmz.streamlit.app
+
 
 Star this repo if you found it useful!
